@@ -1,0 +1,219 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KivoraTools - Free Online Tools for Everyone</title>
+  <meta name="description" content="Discover free online tools for text, images, calculators and everyday tasks. Fast, simple and easy-to-use tools with no signup required.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://fretoolss.github.io/kivoratools/">
+  <meta property="og:title" content="KivoraTools - Free Online Tools">
+  <meta property="og:description" content="Simple, fast and free online tools for everyday tasks.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#101827">
+
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:Arial,sans-serif;background:#f7f8fc;color:#172033;line-height:1.6}
+    header{background:#101827;color:white;padding:18px 6%;display:flex;justify-content:space-between;align-items:center}
+    .logo{font-size:25px;font-weight:800;color:#fff;text-decoration:none}
+    .logo span{color:#8b7cff}
+    nav a{color:#dce2ef;text-decoration:none;margin-left:22px;font-size:14px}
+    .hero{text-align:center;padding:75px 20px 65px;background:linear-gradient(135deg,#111c35,#30276d);color:white}
+    .hero h1{font-size:clamp(32px,6vw,54px);line-height:1.15;margin-bottom:18px}
+    .hero h1 span{color:#a99cff}
+    .hero p{color:#d6d9eb;max-width:620px;margin:0 auto 28px}
+    .search{max-width:560px;margin:auto;display:flex;background:white;border-radius:12px;padding:6px}
+    .search input{flex:1;min-width:0;border:0;outline:0;padding:13px;font-size:15px}
+    .search button,.tool button{border:0;background:#6554df;color:white;padding:12px 20px;border-radius:8px;cursor:pointer;font-weight:bold}
+    main{max-width:1120px;margin:auto;padding:45px 20px}
+    .section-title{text-align:center;margin-bottom:28px}
+    .section-title h2{font-size:29px;margin-bottom:7px}
+    .section-title p{color:#687386}
+    .categories{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-bottom:30px}
+    .categories button{border:1px solid #dddff0;background:white;padding:9px 17px;border-radius:30px;cursor:pointer;color:#30384c}
+    .categories button.active,.categories button:hover{background:#6554df;color:white;border-color:#6554df}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+    .tool{background:white;border:1px solid #e9eaf2;border-radius:14px;padding:23px;transition:.2s}
+    .tool:hover{transform:translateY(-4px);box-shadow:0 10px 28px #17203312}
+    .tool .emoji{font-size:30px;margin-bottom:12px}
+    .tool h3{font-size:18px;margin-bottom:7px}
+    .tool p{font-size:14px;color:#687386;min-height:45px;margin-bottom:15px}
+    .tool button{width:100%}
+    .workspace{display:none;background:white;padding:25px;border-radius:14px;margin:30px 0;border:1px solid #e5e6ef}
+    .workspace h2{margin-bottom:15px}
+    textarea,.workspace input{width:100%;padding:13px;border:1px solid #d8dbea;border-radius:8px;margin:8px 0;font:inherit}
+    .workspace textarea{min-height:120px;resize:vertical}
+    .workspace button{margin:8px 6px 0 0}
+    .result{margin-top:15px;padding:13px;background:#f0efff;border-radius:8px;overflow-wrap:anywhere}
+    .about{margin-top:55px;background:white;border-radius:14px;padding:28px}
+    .about h2{margin-bottom:12px}
+    .about p{color:#596477;margin-bottom:12px}
+    footer{text-align:center;background:#101827;color:#cbd2e2;padding:28px 15px;margin-top:50px;font-size:14px}
+    footer a{color:#c3baff;text-decoration:none;margin:0 8px}
+    @media(max-width:600px){header{padding:15px 18px}nav a{margin-left:10px;font-size:12px}.hero{padding:55px 18px}main{padding:35px 15px}}
+  </style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="#">Kivora<span>Tools</span></a>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#tools">Tools</a>
+    <a href="#about">About</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Everyday Tasks.<br><span>Made Easier.</span></h1>
+  <p>Free online tools to help you work smarter. Simple, fast and useful tools — all in one place.</p>
+  <div class="search">
+    <input id="searchInput" type="search" placeholder="Search for a tool...">
+    <button onclick="searchTools()">Search</button>
+  </div>
+</section>
+
+<main id="tools">
+  <div class="section-title">
+    <h2>Explore Free Online Tools</h2>
+    <p>Choose a tool and get things done in seconds.</p>
+  </div>
+
+  <div class="categories">
+    <button class="active" onclick="filterTools('all',this)">All Tools</button>
+    <button onclick="filterTools('text',this)">Text Tools</button>
+    <button onclick="filterTools('calculator',this)">Calculators</button>
+    <button onclick="filterTools('developer',this)">Developer</button>
+  </div>
+
+  <div class="grid" id="toolGrid">
+    <article class="tool" data-category="text" data-name="word counter">
+      <div class="emoji">📝</div><h3>Word Counter</h3>
+      <p>Count words, characters and sentences in your text.</p>
+      <button onclick="openTool('words')">Use Tool</button>
+    </article>
+    <article class="tool" data-category="text" data-name="case converter">
+      <div class="emoji">🔠</div><h3>Case Converter</h3>
+      <p>Convert text into uppercase or lowercase instantly.</p>
+      <button onclick="openTool('case')">Use Tool</button>
+    </article>
+    <article class="tool" data-category="developer" data-name="url encoder decoder">
+      <div class="emoji">🔗</div><h3>URL Encoder & Decoder</h3>
+      <p>Encode or decode URLs and special characters.</p>
+      <button onclick="openTool('url')">Use Tool</button>
+    </article>
+    <article class="tool" data-category="developer" data-name="password generator">
+      <div class="emoji">🔐</div><h3>Password Generator</h3>
+      <p>Create a random password for your accounts.</p>
+      <button onclick="openTool('password')">Use Tool</button>
+    </article>
+    <article class="tool" data-category="calculator" data-name="percentage calculator">
+      <div class="emoji">📊</div><h3>Percentage Calculator</h3>
+      <p>Calculate percentages quickly and easily.</p>
+      <button onclick="openTool('percentage')">Use Tool</button>
+    </article>
+    <article class="tool" data-category="calculator" data-name="age calculator">
+      <div class="emoji">🎂</div><h3>Age Calculator</h3>
+      <p>Calculate your age from your date of birth.</p>
+      <button onclick="openTool('age')">Use Tool</button>
+    </article>
+  </div>
+
+  <section class="workspace" id="workspace">
+    <h2 id="toolTitle">Online Tool</h2>
+    <div id="toolContent"></div>
+    <button onclick="closeTool()">Close Tool</button>
+  </section>
+
+  <section class="about" id="about">
+    <h2>Welcome to KivoraTools</h2>
+    <p>KivoraTools is a collection of free online tools designed to make everyday digital tasks easier. From text utilities to calculators and developer tools, our goal is to provide simple and useful solutions in one convenient place.</p>
+    <p>Our tools are designed to be easy to use on mobile phones, tablets and desktop computers. No account is required to use these basic tools.</p>
+  </section>
+</main>
+
+<footer>
+  <p>© 2026 KivoraTools. All rights reserved.</p>
+  <p><a href="#about">About</a> · <a href="mailto:hello@kivoratools.com">Contact</a></p>
+</footer>
+
+<script>
+const workspace=document.getElementById('workspace');
+const content=document.getElementById('toolContent');
+const title=document.getElementById('toolTitle');
+
+function openTool(type){
+ workspace.style.display='block';
+ workspace.scrollIntoView({behavior:'smooth'});
+ const tools={
+ words:['Word Counter',`<textarea id="textBox" placeholder="Type or paste your text here..." oninput="countWords()"></textarea><div class="result" id="wordResult">Words: 0 | Characters: 0 | Sentences: 0</div>`],
+ case:['Case Converter',`<textarea id="caseText" placeholder="Enter your text..."></textarea><button onclick="convertCase('upper')">UPPERCASE</button><button onclick="convertCase('lower')">lowercase</button><button onclick="convertCase('title')">Title Case</button><div class="result" id="caseResult"></div>`],
+ url:['URL Encoder & Decoder',`<textarea id="urlText" placeholder="Enter text or URL..."></textarea><button onclick="urlConvert('encode')">Encode</button><button onclick="urlConvert('decode')">Decode</button><div class="result" id="urlResult"></div>`],
+ password:['Password Generator',`<label>Password length: <input id="passLength" type="number" min="6" max="64" value="16"></label><button onclick="makePassword()">Generate Password</button><div class="result" id="passResult"></div>`],
+ percentage:['Percentage Calculator',`<input id="percent" type="number" placeholder="Percentage"><input id="number" type="number" placeholder="Number"><button onclick="calcPercent()">Calculate</button><div class="result" id="percentResult"></div>`],
+ age:['Age Calculator',`<label>Date of birth</label><input id="birth" type="date"><button onclick="calcAge()">Calculate Age</button><div class="result" id="ageResult"></div>`]
+ };
+ title.textContent=tools[type][0];
+ content.innerHTML=tools[type][1];
+}
+function closeTool(){workspace.style.display='none'}
+function countWords(){
+ const t=document.getElementById('textBox').value.trim();
+ const words=t?t.split(/\s+/).length:0;
+ const sentences=t?(t.match(/[.!?]+/g)||[]).length:0;
+ document.getElementById('wordResult').textContent=`Words: ${words} | Characters: ${t.length} | Sentences: ${sentences}`;
+}
+function convertCase(mode){
+ let t=document.getElementById('caseText').value;
+ if(mode==='upper')t=t.toUpperCase();
+ if(mode==='lower')t=t.toLowerCase();
+ if(mode==='title')t=t.toLowerCase().replace(/\b\w/g,c=>c.toUpperCase());
+ document.getElementById('caseResult').textContent=t;
+}
+function urlConvert(mode){
+ try{
+ const t=document.getElementById('urlText').value;
+ document.getElementById('urlResult').textContent=mode==='encode'?encodeURIComponent(t):decodeURIComponent(t);
+ }catch(e){document.getElementById('urlResult').textContent='Invalid encoded text.'}
+}
+function makePassword(){
+ const n=Math.max(6,Math.min(64,Number(document.getElementById('passLength').value)||16));
+ const chars='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&*';
+ const random=new Uint32Array(n);crypto.getRandomValues(random);
+ let p='';for(let x of random)p+=chars[x%chars.length];
+ document.getElementById('passResult').textContent=p;
+}
+function calcPercent(){
+ const p=Number(document.getElementById('percent').value);
+ const n=Number(document.getElementById('number').value);
+ document.getElementById('percentResult').textContent=Number.isFinite(p)&&Number.isFinite(n)?`${p}% of ${n} = ${(p*n/100).toFixed(2)}`:'Enter valid numbers.';
+}
+function calcAge(){
+ const d=new Date(document.getElementById('birth').value);
+ const now=new Date();
+ if(!document.getElementById('birth').value||d>now){document.getElementById('ageResult').textContent='Please enter a valid date of birth.';return}
+ let age=now.getFullYear()-d.getFullYear();
+ const m=now.getMonth()-d.getMonth();
+ if(m<0||(m===0&&now.getDate()<d.getDate()))age--;
+ document.getElementById('ageResult').textContent=`Your age is ${age} years.`;
+}
+function filterTools(category,button){
+ document.querySelectorAll('.categories button').forEach(b=>b.classList.remove('active'));
+ button.classList.add('active');
+ document.querySelectorAll('.tool').forEach(card=>{
+ card.style.display=category==='all'||card.dataset.category===category?'':'none';
+ });
+}
+function searchTools(){
+ const q=document.getElementById('searchInput').value.toLowerCase();
+ document.querySelectorAll('.tool').forEach(card=>{
+ card.style.display=card.dataset.name.includes(q)||card.textContent.toLowerCase().includes(q)?'':'none';
+ });
+}
+document.getElementById('searchInput').addEventListener('input',searchTools);
+</script>
+</body>
+                                   </html>
+      
