@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://fretoolss.github.io/kivoratools/sitemap.xml
